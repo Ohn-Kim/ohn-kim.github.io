@@ -25,21 +25,22 @@
           <div class="columns is-centered">
             <div class="column has-text-centered">
               <h1 class="title is-2 publication-title"><span class="drip-name">DRIP</span>: Self-Improving Robot State Estimation<br class="title-break"> In-the-Wild via Dense Robot-Fitting In the Loop</h1>
-              <div class="is-size-4 publication-authors venue"><strong>RA-L 2026</strong><span class="acceptance"> (Accepted)</span></div>
+              <div class="publication-authors venue">IEEE Robotics and Automation Letters (RA-L) 2026</div>
               <div class="is-size-5 publication-authors authors">
-                <span class="author-block"><a href="../">Kim Ohn</a>,</span>
-                <span class="author-block"><a href="https://youwangk.github.io/">Kim Youwang</a>,</span>
-                <span class="author-block"><a href="https://junukcha.github.io/">Junuk Cha</a>,</span>
-                <span class="author-block"><a href="https://ami.kaist.ac.kr/members/tae-hyun-oh">Tae-Hyun Oh</a></span>
+                <span class="author-block"><a href="../">Kim Ohn</a><sup>1</sup>,</span>
+                <span class="author-block"><a href="https://youwangk.github.io/">Kim Youwang</a><sup>2</sup>,</span>
+                <span class="author-block"><a href="https://junukcha.github.io/">Junuk Cha</a><sup>1</sup>,</span>
+                <span class="author-block"><a href="https://ami.kaist.ac.kr/members/tae-hyun-oh">Tae-Hyun Oh</a><sup>1†</sup></span>
               </div>
-              <div class="is-size-5 publication-authors affiliations">KAIST &nbsp;&middot;&nbsp; POSTECH</div>
+              <div class="is-size-5 publication-authors affiliations"><span><sup>1</sup>KAIST</span>, <span><sup>2</sup>POSTECH</span></div>
+              <p class="publication-authors corresponding-note"><sup>†</sup>denotes corresponding authors</p>
               <div class="publication-links resource-links" aria-label="Publication resources">
-                <button class="button is-normal is-rounded is-dark resource-button" type="button" disabled>
-                  <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/></svg></span>
+                <button class="button is-normal is-rounded is-dark resource-button" type="button">
+                  <span class="icon" aria-hidden="true"><img src="static/icons/paper.svg" alt="" width="16" height="16"></span>
                   <span>arXiv - Coming soon</span>
                 </button>
-                <button class="button is-normal is-rounded is-dark resource-button" type="button" disabled>
-                  <span class="icon" aria-hidden="true"><svg viewBox="0 0 496 512" fill="currentColor"><path d="M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"/></svg></span>
+                <button class="button is-normal is-rounded is-dark resource-button" type="button">
+                  <span class="icon" aria-hidden="true"><img src="static/icons/github.svg" alt="" width="16" height="16"></span>
                   <span>Code - Coming soon</span>
                 </button>
               </div>
@@ -68,7 +69,7 @@
           <div class="column is-four-fifths">
             <h2 id="abstract-title" class="title is-3 has-text-centered">Abstract</h2>
             <div class="content has-text-justified">
-              <p>Estimating robot pose and joint angles from a single image remains challenging in the wild, especially without 3D state labels. <strong>DRIP</strong> is a self-improving training framework that combines a feed-forward predictor with dense visual robot-fitting during training. The predicted robot state is refined using complementary structure, geometry, and silhouette cues. The refined states serve as pseudo-labels to train the network, forming a self-improving loop on real images without 3D state annotations. This transfers the benefits of iterative refinement to the feed-forward model while retaining efficient single-shot inference.</p>
+              <p>Accurately estimating robot state, i.e., pose and joint angles, from a single image remains challenging for in-the-wild scenarios, where 3D state labels, calibrated sensor rigs, and joint encoders are often unavailable in practice. Prior learning-based methods rely on synthetic supervision and sparse 2D cues from real images, e.g., keypoints and masks, which provide limited cues for accurate monocular robot state estimation. To mitigate this, we present <strong>DRIP</strong>, a novel robot-fitting in the loop training framework that learns monocular robot state estimation from real images without 3D state labels. DRIP seamlessly integrates a feed-forward network with iterative robot state refinement in the training pipeline: the network provides an initial robot state prediction, which is then refined through an optimization stage that leverages dense visual cues, e.g., structure, geometry, and silhouette. The refined states are then used as pseudo-labels for subsequent training, forming a self-improving loop that transfers the benefits of refinement to the feed-forward model while preserving efficient single-shot inference at test time. Across multiple real-world robot datasets, DRIP outperforms prior approaches that rely on sparse self-supervision. We show that robot-fitting in the loop training enables effective real-image adaptation for monocular robot state estimation by generating reliable state-level pseudo-labels for stronger supervision.</p>
             </div>
           </div>
         </div>
@@ -105,13 +106,23 @@
         <pre class="citation"><code>TBU</code></pre>
       </div>
     </section>
+
+    <section class="section acknowledgements" aria-labelledby="acknowledgements-title">
+      <div class="container is-max-desktop">
+        <h2 id="acknowledgements-title" class="title is-3">Acknowledgements</h2>
+        <div class="content has-text-justified">
+          <p>We thank the members of AMILab for their helpful discussions and proofreading.</p>
+          <p>This work was supported by the Institute of Information &amp; communications Technology Planning &amp; Evaluation (IITP) grants (No. RS-2025-25443318, Physically-grounded Intelligence: A Dual Competency Approach to Embodied AGI through Constructing and Reasoning in the Real World (33%); No. RS-2024-00457882, National AI Research Lab Project (33%)), the National Research Foundation of Korea (NRF) grant (Grant No. RS-2024-00451947, Project Title: Interaction Framework for Connecting Users to Generative Experiences via Time-Space Expanded Multimedia: Centering on Social Communication Disorders (33%)) funded by the Korea government (MSIT) in 2026, and the InnoCORE program of the Ministry of Science and ICT (26-InnoCORE-01).</p>
+          <p>This website is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>. This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website, we just ask that you link back to the <a href="https://github.com/nerfies/nerfies.github.io">original page</a> in the footer.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
     <div class="container is-max-desktop">
       <div class="content has-text-centered">
         <p><a href="../">Ohn Kim</a></p>
-        <p class="template-credit">Website template adapted from <a href="https://nerfies.github.io/">Nerfies</a> under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
       </div>
     </div>
   </footer>
