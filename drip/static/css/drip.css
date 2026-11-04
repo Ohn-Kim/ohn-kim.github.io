@@ -6,6 +6,9 @@ html { background: #fff; }
 .acceptance { font-size: .75em; }
 .authors { margin-top: .4rem; }
 .affiliations { margin-top: .25rem; }
+.resource-links { display: flex; justify-content: center; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
+.resource-button[disabled] { background-color: #363636; border-color: transparent; color: #fff; opacity: 1; cursor: default; }
+.resource-button .icon svg { width: 1em; height: 1em; }
 .hero.teaser .hero-body { padding-top: 1rem; }
 .figure-link { display: block; cursor: zoom-in; }
 .figure-link img { display: block; width: 100%; height: auto; }
