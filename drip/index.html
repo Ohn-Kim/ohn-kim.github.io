@@ -1,26 +1,109 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="DRIP: Self-Improving Robot State Estimation In-the-Wild via Dense Robot-Fitting In the Loop. IEEE Robotics and Automation Letters (RA-L), accepted 2026.">
-  <meta name="robots" content="noindex">
   <meta name="color-scheme" content="light">
-  <title>DRIP | Ohn Kim</title>
+  <meta property="og:title" content="DRIP: Self-Improving Robot State Estimation In-the-Wild">
+  <meta property="og:description" content="Dense robot-fitting in the training loop for monocular robot state estimation.">
+  <meta property="og:image" content="https://ohn-kim.github.io/drip/assets/teaser.webp">
+  <meta property="og:url" content="https://ohn-kim.github.io/drip/">
+  <meta property="og:type" content="website">
+  <title>DRIP: Self-Improving Robot State Estimation In-the-Wild</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="../stylesheet.css">
-  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/template.css">
+  <link rel="stylesheet" href="static/css/drip.css">
 </head>
 <body>
-  <main class="project-page">
-    <a class="back-link" href="../">&larr; Ohn Kim</a>
-    <header class="project-intro">
-      <h1>DRIP: Self-Improving Robot State Estimation In-the-Wild via Dense Robot-Fitting In the Loop</h1>
-      <p><strong>Kim Ohn</strong>, Kim Youwang, Junuk Cha, Tae-Hyun Oh</p>
-      <p><em>IEEE Robotics and Automation Letters (RA-L)</em>, accepted 2026</p>
-      <p>Project page coming soon.</p>
+  <main>
+    <header class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-2 publication-title"><span class="drip-name">DRIP</span>: Self-Improving Robot State Estimation<br class="title-break"> In-the-Wild via Dense Robot-Fitting In the Loop</h1>
+              <div class="is-size-4 publication-authors venue"><strong>RA-L 2026</strong><span class="acceptance"> (Accepted)</span></div>
+              <div class="is-size-5 publication-authors authors">
+                <span class="author-block"><a href="../">Kim Ohn</a>,</span>
+                <span class="author-block"><a href="https://youwangk.github.io/">Kim Youwang</a>,</span>
+                <span class="author-block">Junuk Cha,</span>
+                <span class="author-block"><a href="https://ami.kaist.ac.kr/members/tae-hyun-oh">Tae-Hyun Oh</a></span>
+              </div>
+              <div class="is-size-5 publication-authors affiliations">KAIST &nbsp;&middot;&nbsp; POSTECH</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
-    <!-- Add the paper/code links, figures, and results here when ready. -->
+
+    <section class="hero teaser" aria-label="Overview">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <figure>
+            <a class="figure-link" href="assets/teaser.webp" target="_blank" rel="noopener" aria-label="Open the DRIP overview figure at full size">
+              <img src="assets/teaser.webp" alt="Comparison of optimization, DRIP, and regression approaches to robot state estimation, showing dense training cues and efficient DRIP inference." width="1800" height="1027" fetchpriority="high">
+            </a>
+            <figcaption class="subtitle has-text-centered teaser-caption"><strong>DRIP</strong> brings dense robot-fitting into the training loop, improving monocular robot state estimation while preserving efficient feed-forward inference.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="abstract-title">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <h2 id="abstract-title" class="title is-3 has-text-centered">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>Estimating robot pose and joint angles from a single image remains challenging in the wild, especially without 3D state labels. <strong>DRIP</strong> is a self-improving training framework that combines a feed-forward predictor with dense visual robot-fitting during training. The predicted robot state is refined using complementary structure, geometry, and silhouette cues. The refined states serve as pseudo-labels to train the network, forming a self-improving loop on real images without 3D state annotations. This transfers the benefits of iterative refinement to the feed-forward model while retaining efficient single-shot inference.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="pipeline-title">
+      <div class="container is-max-desktop">
+        <h2 id="pipeline-title" class="title is-3 has-text-centered">DRIP Pipeline</h2>
+        <figure>
+          <a class="figure-link" href="assets/pipeline.webp" target="_blank" rel="noopener" aria-label="Open the DRIP training pipeline figure at full size">
+            <img src="assets/pipeline.webp" alt="DRIP training pipeline: a frozen feed-forward network initializes dense robot-fitting, refined states supervise the learning stage, and the trained network predicts robot states at inference." width="1800" height="660" loading="lazy" decoding="async">
+          </a>
+          <figcaption class="content figure-caption">A feed-forward network predicts the initial robot state from a real image. Dense visual robot-fitting refines the prediction using structure, depth, and silhouette cues. These refined states supervise the network in an alternating optimization-and-learning loop. At inference time, only the feed-forward network is needed.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="results-title">
+      <div class="container is-max-desktop">
+        <h2 id="results-title" class="title is-3 has-text-centered">Qualitative Results</h2>
+        <figure>
+          <a class="figure-link" href="assets/qualitative.webp" target="_blank" rel="noopener" aria-label="Open the qualitative comparison figure at full size">
+            <img src="assets/qualitative.webp" alt="Real-world Panda robot images comparing HoroPose, RoboPEPP, and DRIP. Purple predictions and cyan ground truth highlight alignment around the wrist and gripper." width="1800" height="1072" loading="lazy" decoding="async">
+          </a>
+          <figcaption class="content figure-caption">Qualitative comparisons on real-world Panda images. Predicted robot states (purple) are overlaid with ground truth (cyan). DRIP achieves tighter visual alignment, particularly around the wrist and gripper.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="citation-title">
+      <div class="container is-max-desktop">
+        <h2 id="citation-title" class="title is-3">Citation</h2>
+        <pre class="citation"><code>TBU</code></pre>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer">
+    <div class="container is-max-desktop">
+      <div class="content has-text-centered">
+        <p><a href="../">Ohn Kim</a></p>
+        <p class="template-credit">Website template adapted from <a href="https://sohwi-lim.github.io/CLAY/">CLAY</a> and <a href="https://nerfies.github.io/">Nerfies</a> under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

@@ -1,0 +1,29 @@
+:root { color-scheme: light; }
+html { background: #fff; }
+.publication-title { line-height: 1.2; }
+.drip-name { color: #209cee; }
+.venue { margin-top: 1.6rem; }
+.acceptance { font-size: .75em; }
+.authors { margin-top: .4rem; }
+.affiliations { margin-top: .25rem; }
+.hero.teaser .hero-body { padding-top: 1rem; }
+.figure-link { display: block; cursor: zoom-in; }
+.figure-link img { display: block; width: 100%; height: auto; }
+.teaser-caption { margin-top: 1.5rem; line-height: 1.5; }
+.figure-caption { margin-top: 1.5rem; }
+.citation { white-space: pre-wrap; overflow-wrap: anywhere; }
+.template-credit { font-size: .875rem; }
+.footer { padding: 3rem 1.5rem; }
+a:focus-visible { outline: 2px solid #209cee; outline-offset: 4px; }
+
+@media screen and (max-width: 768px) {
+  .publication-title { font-size: 2rem !important; line-height: 1.25; }
+  .title-break { display: none; }
+  .hero-body { padding: 2.5rem 1.25rem 1.5rem; }
+  .hero.teaser .hero-body { padding: 1rem 1.25rem 2rem; }
+  .venue { margin-top: 1.25rem; }
+  .authors, .affiliations { font-size: 1.125rem !important; }
+  .section { padding: 2rem 1.25rem; }
+  .content.has-text-justified { text-align: left !important; }
+  .teaser-caption { font-size: 1.125rem; }
+}
