@@ -54,9 +54,9 @@
       <div class="container is-max-desktop">
         <div class="hero-body">
           <figure>
-            <a class="figure-link" href="assets/teaser.webp" target="_blank" rel="noopener" aria-label="Open the DRIP overview figure at full size">
+            <div class="figure-image">
               <img src="assets/teaser.webp" alt="Comparison of optimization, DRIP, and regression approaches to robot state estimation, showing dense training cues and efficient DRIP inference." width="1800" height="1027" fetchpriority="high">
-            </a>
+            </div>
             <figcaption class="subtitle has-text-centered teaser-caption"><strong>DRIP</strong> brings dense robot-fitting into the training loop, improving monocular robot state estimation while preserving efficient feed-forward inference.</figcaption>
           </figure>
         </div>
@@ -80,9 +80,9 @@
       <div class="container is-max-desktop">
         <h2 id="pipeline-title" class="title is-3 has-text-centered">DRIP Pipeline</h2>
         <figure>
-          <a class="figure-link" href="assets/pipeline.webp" target="_blank" rel="noopener" aria-label="Open the DRIP training pipeline figure at full size">
+          <div class="figure-image">
             <img src="assets/pipeline.webp" alt="DRIP training pipeline: a frozen feed-forward network initializes dense robot-fitting, refined states supervise the learning stage, and the trained network predicts robot states at inference." width="1800" height="660" loading="lazy" decoding="async">
-          </a>
+          </div>
           <figcaption class="content figure-caption">A feed-forward network predicts the initial robot state from a real image. Dense visual robot-fitting refines the prediction using structure, depth, and silhouette cues. These refined states supervise the network in an alternating optimization-and-learning loop. At inference time, only the feed-forward network is needed.</figcaption>
         </figure>
       </div>
@@ -92,9 +92,9 @@
       <div class="container is-max-desktop">
         <h2 id="results-title" class="title is-3 has-text-centered">Qualitative Results</h2>
         <figure>
-          <a class="figure-link" href="assets/qualitative.webp" target="_blank" rel="noopener" aria-label="Open the qualitative comparison figure at full size">
+          <div class="figure-image">
             <img src="assets/qualitative.webp" alt="Real-world Panda robot images comparing HoroPose, RoboPEPP, and DRIP. Purple predictions and cyan ground truth highlight alignment around the wrist and gripper." width="1800" height="1072" loading="lazy" decoding="async">
-          </a>
+          </div>
           <figcaption class="content figure-caption">Qualitative comparisons on real-world Panda images. Predicted robot states (purple) are overlaid with ground truth (cyan). DRIP achieves tighter visual alignment, particularly around the wrist and gripper.</figcaption>
         </figure>
       </div>
