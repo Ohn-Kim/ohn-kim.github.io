@@ -1,0 +1,51 @@
+/* Content layout adapted from Jon Barron's table-based academic homepage.
+   The original font, link colors, and type sizes are in stylesheet.css. */
+:root { color-scheme: light; }
+body { color: #000; background: #fff; }
+a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+.site-table, .section-table {
+  width: 100%;
+  border: 0;
+  border-spacing: 0;
+  border-collapse: separate;
+  margin-right: auto;
+  margin-left: auto;
+}
+.site-table { max-width: 800px; }
+.site-cell { padding: 0; }
+.profile-text { padding: 2.5%; width: 60%; vertical-align: middle; }
+.name { text-align: center; font-weight: 400; }
+.profile-text p { line-height: 1.5; }
+.profile-links { text-align: center; }
+.profile-photo { padding: 2.5%; width: 40%; max-width: 40%; vertical-align: middle; }
+.profile-photo img { display: block; width: 100%; height: auto; max-width: 100%; }
+.pending { color: #777; }
+
+.text-section { padding: 20px; }
+.text-section p { margin: 14px 0 0; line-height: 1.5; }
+.publication-entry { padding: 20px 0 0; }
+.publication-entry h3 { font-size: 14px; line-height: 1.5; margin: 0; }
+.publication-entry p { margin-top: 0; }
+.publication-entry .publication-authors { margin-top: 5px; }
+.publication-entry .publication-summary { margin-top: 12px; }
+footer { padding: 64px 20px 14px; text-align: center; }
+footer p, footer a { font-size: 12px; }
+
+/* Standalone research page; its address remains /drip/. */
+.project-page { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+.back-link { display: inline-block; margin-bottom: 88px; }
+.project-intro { text-align: center; }
+.project-intro h1 { margin: 0 0 14px; font-size: 40px; font-weight: 400; }
+.project-intro p { color: #777; }
+
+@media (max-width: 540px) {
+  .profile-table, .profile-table tbody, .profile-table tr { display: block; }
+  .profile-text { display: block; width: auto; padding: 18px 20px 14px; }
+  .profile-photo { display: block; box-sizing: border-box; width: 100%; max-width: none; padding: 0 20px 20px; }
+  .profile-photo img { width: 200px; margin: 0 auto; }
+  .name { padding-top: 8px; }
+  .profile-text p { max-width: 360px; margin-left: auto; margin-right: auto; }
+  .text-section { padding: 18px 20px; }
+  footer { padding-top: 48px; }
+}
