@@ -3,121 +3,64 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="DRIP: Self-Improving Robot State Estimation In-the-Wild via Dense Robot-Fitting In the Loop. IEEE Robotics and Automation Letters (RA-L), accepted 2026.">
+  <meta name="description" content="DRIP: Self-Improving Robot State Estimation In-the-Wild via Dense Robot-Fitting In the Loop. IEEE Robotics and Automation Letters (RA-L), 2026.">
   <meta name="color-scheme" content="light">
   <meta property="og:title" content="DRIP: Self-Improving Robot State Estimation In-the-Wild">
-  <meta property="og:description" content="Dense robot-fitting in the training loop for monocular robot state estimation.">
   <meta property="og:image" content="https://ohn-kim.github.io/drip/assets/teaser.webp">
   <meta property="og:url" content="https://ohn-kim.github.io/drip/">
-  <meta property="og:type" content="website">
   <title>DRIP: Self-Improving Robot State Estimation In-the-Wild</title>
   <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans:400,600,700" rel="stylesheet">
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/template.css">
-  <link rel="stylesheet" href="static/css/drip.css?v=1263aca41af5">
+  <link rel="stylesheet" href="static/css/lato.css">
+  <link rel="stylesheet" href="static/css/drip.css?v=32ab8b214a55">
 </head>
 <body>
-  <main>
-    <header class="hero">
-      <div class="hero-body">
-        <div class="container is-max-desktop">
-          <div class="columns is-centered">
-            <div class="column has-text-centered">
-              <h1 class="title is-2 publication-title"><span class="drip-name">DRIP</span>: Self-Improving Robot State Estimation<br class="title-break"> In-the-Wild via Dense Robot-Fitting In the Loop</h1>
-              <div class="publication-authors venue">IEEE Robotics and Automation Letters (RA-L) 2026</div>
-              <div class="is-size-5 publication-authors authors">
-                <span class="author-block"><a href="../">Kim Ohn</a><sup>1</sup>,</span>
-                <span class="author-block"><a href="https://youwangk.github.io/">Kim Youwang</a><sup>2</sup>,</span>
-                <span class="author-block"><a href="https://junukcha.github.io/">Junuk Cha</a><sup>1</sup>,</span>
-                <span class="author-block"><a href="https://ami.kaist.ac.kr/members/tae-hyun-oh">Tae-Hyun Oh</a><sup>1†</sup></span>
-              </div>
-              <div class="is-size-5 publication-authors affiliations"><span><sup>1</sup>KAIST</span>, <span><sup>2</sup>POSTECH</span></div>
-              <p class="publication-authors corresponding-note"><sup>†</sup>denotes corresponding authors</p>
-              <div class="publication-links resource-links" aria-label="Publication resources">
-                <button class="button is-normal is-rounded is-dark resource-button" type="button">
-                  <span class="icon" aria-hidden="true"><img src="static/icons/paper.svg" alt="" width="16" height="16"></span>
-                  <span>arXiv - Coming soon</span>
-                </button>
-                <button class="button is-normal is-rounded is-dark resource-button" type="button">
-                  <span class="icon" aria-hidden="true"><img src="static/icons/github.svg" alt="" width="16" height="16"></span>
-                  <span>Code - Coming soon</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <section class="hero teaser" aria-label="Overview">
-      <div class="container is-max-desktop">
-        <div class="hero-body">
-          <figure>
-            <div class="figure-image">
-              <img src="assets/teaser.webp" alt="Comparison of optimization, DRIP, and regression approaches to robot state estimation, showing dense training cues and efficient DRIP inference." width="1800" height="1027" fetchpriority="high">
-            </div>
-            <figcaption class="subtitle has-text-centered teaser-caption"><strong>DRIP</strong> brings dense robot-fitting into the training loop, improving monocular robot state estimation while preserving efficient feed-forward inference.</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="abstract-title">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column is-four-fifths">
-            <h2 id="abstract-title" class="title is-3 has-text-centered">Abstract</h2>
-            <div class="content has-text-justified">
-              <p>Accurately estimating robot state, i.e., pose and joint angles, from a single image remains challenging for in-the-wild scenarios, where 3D state labels, calibrated sensor rigs, and joint encoders are often unavailable in practice. Prior learning-based methods rely on synthetic supervision and sparse 2D cues from real images, e.g., keypoints and masks, which provide limited cues for accurate monocular robot state estimation. To mitigate this, we present <strong>DRIP</strong>, a novel robot-fitting in the loop training framework that learns monocular robot state estimation from real images without 3D state labels. DRIP seamlessly integrates a feed-forward network with iterative robot state refinement in the training pipeline: the network provides an initial robot state prediction, which is then refined through an optimization stage that leverages dense visual cues, e.g., structure, geometry, and silhouette. The refined states are then used as pseudo-labels for subsequent training, forming a self-improving loop that transfers the benefits of refinement to the feed-forward model while preserving efficient single-shot inference at test time. Across multiple real-world robot datasets, DRIP outperforms prior approaches that rely on sparse self-supervision. We show that robot-fitting in the loop training enables effective real-image adaptation for monocular robot state estimation by generating reliable state-level pseudo-labels for stronger supervision.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="pipeline-title">
-      <div class="container is-max-desktop">
-        <h2 id="pipeline-title" class="title is-3 has-text-centered">DRIP Pipeline</h2>
-        <figure>
-          <div class="figure-image">
-            <img src="assets/pipeline.webp" alt="DRIP training pipeline: a frozen feed-forward network initializes dense robot-fitting, refined states supervise the learning stage, and the trained network predicts robot states at inference." width="1800" height="660" loading="lazy" decoding="async">
-          </div>
-          <figcaption class="content figure-caption">A feed-forward network predicts the initial robot state from a real image. Dense visual robot-fitting refines the prediction using structure, depth, and silhouette cues. These refined states supervise the network in an alternating optimization-and-learning loop. At inference time, only the feed-forward network is needed.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="results-title">
-      <div class="container is-max-desktop">
-        <h2 id="results-title" class="title is-3 has-text-centered">Qualitative Results</h2>
-        <figure>
-          <div class="figure-image">
-            <img src="assets/qualitative.webp" alt="Real-world Panda robot images comparing HoroPose, RoboPEPP, and DRIP. Purple predictions and cyan ground truth highlight alignment around the wrist and gripper." width="1800" height="1072" loading="lazy" decoding="async">
-          </div>
-          <figcaption class="content figure-caption">Qualitative comparisons on real-world Panda images. Predicted robot states (purple) are overlaid with ground truth (cyan). DRIP achieves tighter visual alignment, particularly around the wrist and gripper.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="citation-title">
-      <div class="container is-max-desktop">
-        <h2 id="citation-title" class="title is-3 has-text-centered">Citation</h2>
-        <pre class="citation" tabindex="0" role="region" aria-label="DRIP BibTeX citation"><code>TBU</code></pre>
-      </div>
-    </section>
-
-    <section class="acknowledgements" aria-labelledby="acknowledgements-title">
-      <div class="container is-max-desktop">
-        <div class="content">
-          <h2 id="acknowledgements-title" class="title is-3 has-text-centered">Acknowledgement</h2>
-          <p>We thank the members of AMILab for their helpful discussions and proofreading.</p>
+<header class="paper-header column">
+  <h1><strong>DRIP</strong>: Self-Improving Robot State Estimation In-the-Wild via Dense Robot-Fitting In the Loop</h1>
+  <p class="venue">IEEE Robotics and Automation Letters (RA-L) 2026</p>
+  <div class="authors">
+    <span><a href="../">Kim Ohn</a><sup>1</sup></span>
+    <span><a href="https://youwangk.github.io/">Kim Youwang</a><sup>2</sup></span>
+    <span><a href="https://junukcha.github.io/">Junuk Cha</a><sup>1</sup></span>
+    <span><a href="https://ami.kaist.ac.kr/members/tae-hyun-oh">Tae-Hyun Oh</a><sup>1†</sup></span>
+  </div>
+  <p class="affiliations"><span><sup>1</sup>KAIST</span><span><sup>2</sup>POSTECH</span></p>
+  <p class="corresponding-note"><sup>†</sup>denotes corresponding authors</p>
+  <div class="resource-links" aria-label="Publication resources">
+    <button class="resource-button primary" type="button"><img src="static/icons/paper.svg" alt="" width="16" height="16">arXiv - Coming soon</button>
+    <button class="resource-button" type="button"><img src="static/icons/github.svg" alt="" width="16" height="16">Code - Coming soon</button>
+  </div>
+</header>
+<main>
+  <section class="teaser column" aria-label="Overview">
+    <figure><div class="figure-image"><img src="assets/teaser.webp" alt="Comparison of optimization, DRIP, and regression approaches to robot state estimation, showing dense training cues and efficient DRIP inference." width="1800" height="1027" fetchpriority="high"></div>
+    <figcaption><strong>DRIP</strong> brings dense robot-fitting into the training loop, improving monocular robot state estimation while preserving efficient feed-forward inference.</figcaption></figure>
+  </section>
+  <section class="section column" aria-labelledby="abstract-title"><h2 id="abstract-title">Abstract</h2><div class="prose"><p>Accurately estimating robot state, i.e., pose and joint angles, from a single image remains challenging for in-the-wild scenarios, where 3D state labels, calibrated sensor rigs, and joint encoders are often unavailable in practice. Prior learning-based methods rely on synthetic supervision and sparse 2D cues from real images, e.g., keypoints and masks, which provide limited cues for accurate monocular robot state estimation. To mitigate this, we present <strong>DRIP</strong>, a novel robot-fitting in the loop training framework that learns monocular robot state estimation from real images without 3D state labels. DRIP seamlessly integrates a feed-forward network with iterative robot state refinement in the training pipeline: the network provides an initial robot state prediction, which is then refined through an optimization stage that leverages dense visual cues, e.g., structure, geometry, and silhouette. The refined states are then used as pseudo-labels for subsequent training, forming a self-improving loop that transfers the benefits of refinement to the feed-forward model while preserving efficient single-shot inference at test time. Across multiple real-world robot datasets, DRIP outperforms prior approaches that rely on sparse self-supervision. We show that robot-fitting in the loop training enables effective real-image adaptation for monocular robot state estimation by generating reliable state-level pseudo-labels for stronger supervision.</p></div></section>
+  <section class="section wide" aria-labelledby="pipeline-title"><h2 id="pipeline-title">Method</h2><figure><div class="figure-image"><img src="assets/pipeline.webp" alt="DRIP training pipeline: network initialization, dense robot-fitting, pseudo-label training, and feed-forward inference." width="1800" height="660" loading="lazy" decoding="async"></div><figcaption>A feed-forward network predicts the initial robot state from a real image. Dense visual robot-fitting refines the prediction using structure, depth, and silhouette cues. These refined states supervise the network in an alternating optimization-and-learning loop. At inference time, only the feed-forward network is needed.</figcaption></figure></section>
+  <section class="section wide" aria-labelledby="qualitative-title"><h2 id="qualitative-title">Qualitative Results</h2><figure><div class="figure-image"><img src="assets/qualitative.webp" alt="Real-world Panda images comparing HoroPose, RoboPEPP, and DRIP; predicted states in purple and ground truth in cyan." width="1800" height="1072" loading="lazy" decoding="async"></div><figcaption>Qualitative comparisons on real-world Panda images. Predicted robot states (purple) are overlaid with ground truth (cyan). DRIP achieves tighter visual alignment, particularly around the wrist and gripper.</figcaption></figure></section>
+  <section class="section wide" aria-labelledby="quantitative-title"><h2 id="quantitative-title">Quantitative Results</h2><p class="section-intro">Monocular robot state estimation on four real-world Panda subsets in DREAM. DRIP achieves the highest ADD-AUC and lowest mean ADD across all four subsets.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Robot state estimation comparison, scroll horizontally for all datasets">
+<table class="results-table main-results">
+<caption>Robot state estimation on DREAM</caption>
+<thead><tr><th scope="col" rowspan="2">Method</th><th scope="colgroup" colspan="3">Panda-AK (Azure)</th><th scope="colgroup" colspan="3">Panda-XK (Kinect)</th><th scope="colgroup" colspan="3">Panda-RS (RealSense)</th><th scope="colgroup" colspan="3">Panda-ORB</th></tr><tr><th scope="col">AUC ↑</th><th scope="col">Mean ↓</th><th scope="col">L1<sub>joint</sub> ↓</th><th scope="col">AUC ↑</th><th scope="col">Mean ↓</th><th scope="col">L1<sub>joint</sub> ↓</th><th scope="col">AUC ↑</th><th scope="col">Mean ↓</th><th scope="col">L1<sub>joint</sub> ↓</th><th scope="col">AUC ↑</th><th scope="col">Mean ↓</th><th scope="col">L1<sub>joint</sub> ↓</th></tr></thead>
+<tbody><tr><th scope="row">RoboPose</th><td>70.4</td><td>34.3</td><td>–</td><td>77.6</td><td>22.3</td><td>–</td><td>74.3</td><td>26.0</td><td>–</td><td>70.4</td><td>30.1</td><td>–</td></tr>
+<tr><th scope="row">HoroPose</th><td>82.2</td><td>18.9</td><td><strong>6.9</strong></td><td>76.0</td><td>24.0</td><td>6.1</td><td>75.2</td><td>24.8</td><td>10.4</td><td>75.2</td><td>24.8</td><td>7.6</td></tr>
+<tr><th scope="row">RoboPEPP</th><td>75.3</td><td>28.9</td><td>10.6</td><td>78.5</td><td>22.4</td><td>8.5</td><td>80.5</td><td>23.1</td><td>8.1</td><td>77.5</td><td>27.5</td><td>15.7</td></tr>
+<tr><th scope="row">RoboTAG</th><td>83.1</td><td>–</td><td>–</td><td>75.7</td><td>–</td><td>–</td><td>78.3</td><td>–</td><td>–</td><td>77.5</td><td>–</td><td>–</td></tr>
+<tr class="ours"><th scope="row">DRIP <span>(ours)</span></th><td><strong>83.4</strong></td><td><strong>16.6</strong></td><td>8.3</td><td><strong>84.4</strong></td><td><strong>15.5</strong></td><td><strong>4.5</strong></td><td><strong>82.5</strong></td><td><strong>17.5</strong></td><td><strong>3.9</strong></td><td><strong>78.4</strong></td><td><strong>21.6</strong></td><td><strong>6.3</strong></td></tr></tbody></table></div>
+<p class="table-note">ADD-AUC ↑: higher is better. Mean ADD (mm) ↓ and mean joint-angle error (°) ↓: lower is better. Best results are bold. HoroPose and RoboPEPP use their official checkpoints; RoboTAG results are reported from its paper. “–” indicates an unreported value.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Joint-angle errors, scroll horizontally for all joints"><table class="results-table joint-results"><caption>Joint-angle accuracy</caption><thead><tr><th scope="col">Subset</th><th scope="col">Method</th><th scope="col">J1</th><th scope="col">J2</th><th scope="col">J3</th><th scope="col">J4</th><th scope="col">J5</th><th scope="col">J6</th><th scope="col">Avg.</th></tr></thead><tbody><tr class="group-start"><th scope="rowgroup" rowspan="3" class="dataset">Panda-XK</th><th scope="row">HoroPose</th><td>10.74</td><td>4.85</td><td>4.66</td><td>2.81</td><td>6.65</td><td>6.71</td><td>6.07</td></tr>
+<tr class=""><th scope="row">RoboPEPP</th><td>28.95</td><td>3.06</td><td><strong>3.46</strong></td><td><strong>1.53</strong></td><td>5.97</td><td>7.98</td><td>8.49</td></tr>
+<tr class="ours "><th scope="row">DRIP</th><td><strong>10.06</strong></td><td><strong>2.46</strong></td><td>4.22</td><td>1.85</td><td><strong>3.60</strong></td><td><strong>5.00</strong></td><td><strong>4.53</strong></td></tr>
+<tr class="group-start"><th scope="rowgroup" rowspan="3" class="dataset">Panda-RS</th><th scope="row">HoroPose</th><td>34.58</td><td>6.97</td><td>6.38</td><td>5.28</td><td>5.68</td><td>3.29</td><td>10.36</td></tr>
+<tr class=""><th scope="row">RoboPEPP</th><td>31.21</td><td>4.81</td><td>3.86</td><td>2.37</td><td>4.09</td><td><strong>1.95</strong></td><td>8.05</td></tr>
+<tr class="ours "><th scope="row">DRIP</th><td><strong>10.71</strong></td><td><strong>1.84</strong></td><td><strong>3.31</strong></td><td><strong>2.29</strong></td><td><strong>2.95</strong></td><td>2.13</td><td><strong>3.87</strong></td></tr>
+<tr class="group-start"><th scope="rowgroup" rowspan="3" class="dataset">Average</th><th scope="row">HoroPose</th><td>22.66</td><td>5.91</td><td>5.52</td><td>4.04</td><td>6.17</td><td>4.73</td><td>8.22</td></tr>
+<tr class=""><th scope="row">RoboPEPP</th><td>30.08</td><td>3.94</td><td><strong>3.66</strong></td><td><strong>1.95</strong></td><td>5.03</td><td>4.97</td><td>8.27</td></tr>
+<tr class="ours "><th scope="row">DRIP</th><td><strong>10.39</strong></td><td><strong>2.15</strong></td><td>3.77</td><td>2.07</td><td><strong>3.28</strong></td><td><strong>3.57</strong></td><td><strong>4.20</strong></td></tr>
+</tbody></table></div><p class="table-note">Mean absolute joint-angle error (°) for the first six Panda revolute joints. Lower is better; best results within each subset are bold.</p></section>
+  <section class="section column" aria-labelledby="citation-title"><h2 id="citation-title">Citation</h2><pre class="citation" tabindex="0" role="region" aria-label="DRIP BibTeX citation"><code>TBU</code></pre></section>
+  <section class="acknowledgements" aria-labelledby="acknowledgements-title"><div class="wide"><h2 id="acknowledgements-title">Acknowledgement</h2><div class="prose"><p>We thank the members of AMILab for their helpful discussions and proofreading.</p>
           <p>This work was supported by the Institute of Information &amp; communications Technology Planning &amp; Evaluation (IITP) grants (No. RS-2025-25443318, Physically-grounded Intelligence: A Dual Competency Approach to Embodied AGI through Constructing and Reasoning in the Real World (33%); No. RS-2024-00457882, National AI Research Lab Project (33%)), the National Research Foundation of Korea (NRF) grant (Grant No. RS-2024-00451947, Project Title: Interaction Framework for Connecting Users to Generative Experiences via Time-Space Expanded Multimedia: Centering on Social Communication Disorders (33%)) funded by the Korea government (MSIT) in 2026, and the InnoCORE program of the Ministry of Science and ICT (26-InnoCORE-01).</p>
-          <p>This website is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>. This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website, we just ask that you link back to the <a href="https://github.com/nerfies/nerfies.github.io">original page</a> in the footer.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
+          <p>This website is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>. This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website, we just ask that you link back to the <a href="https://github.com/nerfies/nerfies.github.io">original page</a> in the footer.</p></div></div></section>
+</main>
 </body>
 </html>
