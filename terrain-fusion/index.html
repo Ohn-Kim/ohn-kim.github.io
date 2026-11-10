@@ -13,18 +13,19 @@
   <title>Scalable Off-road Semantic Terrain Map Estimation</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../drip/static/css/lato.css">
-  <link rel="stylesheet" href="terrain.css">
+  <link rel="stylesheet" href="terrain.css?v=iv2024">
 </head>
 <body>
   <nav class="page-nav wrap" aria-label="Project navigation">
     <a href="../">← Ohn Kim</a>
     <a href="#method">Method</a>
     <a href="#results">Results</a>
-    <a href="#talk">Talk</a>
+    <a href="#citation">Citation</a>
   </nav>
   <header class="paper-header wrap">
     <p class="eyebrow">Off-road perception · 2024</p>
     <h1>Scalable Off-road Semantic Terrain Map Estimation using <span>Uncertainty-aware LiDAR-Camera Fusion</span></h1>
+    <p class="venue">IEEE Intelligent Vehicles Symposium (IV), 2024</p>
     <div class="authors">
       <span><a href="../">Ohn Kim</a><sup>*</sup></span>
       <span><a href="https://junwon.me/">Junwon Seo</a><sup>*</sup></span>
@@ -33,18 +34,16 @@
     <p class="affiliation">Agency for Defense Development</p>
     <p class="equal-note">* Equal contribution</p>
     <div class="resource-links" aria-label="Paper resources">
-      <a class="resource-button primary" href="paper.pdf">Paper PDF <span aria-hidden="true">↗</span></a>
-      <a class="resource-button" href="https://arxiv.org/abs/2403.02642">arXiv (UFO version) <span aria-hidden="true">↗</span></a>
-      <a class="resource-button" href="https://www.youtube.com/watch?v=xJEXuIprkSg&amp;t=2437">Research talk <span aria-hidden="true">↗</span></a>
+      <a class="resource-button primary" href="https://arxiv.org/abs/2403.02642">arXiv <span aria-hidden="true">↗</span></a>
+      <a class="resource-button" href="paper.pdf">PDF (extended version) <span aria-hidden="true">↗</span></a>
     </div>
-    <p class="version-note">This page follows the three-author manuscript above. The related arXiv preprint has a different title and author list.</p>
   </header>
   <main>
     <section class="hero wrap" aria-label="Research overview">
       <p class="lead">A single LiDAR scan and an RGB image.<br><strong>A dense semantic map of the terrain ahead.</strong></p>
       <figure class="teaser-figure">
         <img src="assets/teaser.webp" alt="Two off-road scenes, each showing an RGB image and a sparse LiDAR scan alongside the dense bird's-eye-view semantic terrain map produced by fusion." width="1033" height="629" fetchpriority="high">
-        <figcaption>Combine the camera's visual semantics with LiDAR's geometric structure to complete a local terrain map in bird's-eye view (BEV). Figure 1 from the manuscript.</figcaption>
+        <figcaption>Combine the camera's visual semantics with LiDAR's geometric structure to complete a local terrain map in bird's-eye view (BEV). Figure 1 from the extended version.</figcaption>
       </figure>
       <p class="tldr"><strong>TL;DR</strong> Multi-scale sensor fusion improves terrain classification. Image-guided pseudo-labels provide supervision without manual 3D annotation, while uncertainty-aware training reduces the influence of unreliable labels.</p>
     </section>
@@ -94,7 +93,7 @@
       <div class="section-heading">
         <p class="section-label">03 / Evaluate the map</p>
         <h2 id="results-heading">Preserve structure. Recover semantic detail.</h2>
-        <p>Evaluated on RELLIS-3D and the authors' off-road driving dataset, fusion improves mapping over the camera-only and LiDAR-only baselines compared in the manuscript.</p>
+        <p>Evaluated on RELLIS-3D and the authors' off-road driving dataset, fusion improves mapping over the camera-only and LiDAR-only baselines compared in the paper.</p>
       </div>
       <figure>
         <img src="assets/qualitative.webp" alt="Four scenes comparing RGB images, ground truth, camera-only, LiDAR-only, and the proposed fusion method. Fusion better preserves terrain geometry and identifies semantic details such as puddles and dirt." width="1796" height="1450" loading="lazy" decoding="async">
@@ -102,7 +101,7 @@
       </figure>
       <div class="table-scroll" role="region" aria-label="Quantitative mapping results; scroll horizontally on small screens" tabindex="0">
         <table>
-          <caption>Semantic terrain map estimation <span>· Table I, manuscript</span></caption>
+          <caption>Semantic terrain map estimation <span>· Table I, extended version</span></caption>
           <thead>
             <tr><th scope="col" rowspan="2">Method</th><th scope="colgroup" colspan="2">RELLIS-3D</th><th scope="colgroup" colspan="2">Authors' dataset</th></tr>
             <tr><th scope="col">mIoU (%) ↑</th><th scope="col">Accuracy (%) ↑</th><th scope="col">mIoU (%) ↑</th><th scope="col">Accuracy (%) ↑</th></tr>
@@ -126,8 +125,8 @@
       <div class="split-layout seasonal-layout">
         <div class="prose">
           <p>A segmentation model trained on summer images produces uncertain predictions on winter scenes. Using these predictions as equally reliable training targets can carry their mistakes into the BEV map.</p>
-          <p>In the manuscript's seasonal-shift experiment, uncertainty-aware optimization reduces the effect of noisy pseudo-labels and corrects much of the vegetation misclassified as dirt.</p>
-          <p class="aside">The weighting improves learning from uncertain supervision. The model can still be overconfident in occluded regions, a limitation discussed in the manuscript.</p>
+          <p>In the paper's seasonal-shift experiment, uncertainty-aware optimization reduces the effect of noisy pseudo-labels and corrects much of the vegetation misclassified as dirt.</p>
+          <p class="aside">The weighting improves learning from uncertain supervision. The model can still be overconfident in occluded regions, a limitation discussed in the paper.</p>
         </div>
         <figure>
           <img src="assets/seasonal-shift.webp" alt="Summer and winter views of the same road, noisy winter segmentation, and BEV predictions without and with uncertainty-aware optimization. The uncertainty-aware result reduces vegetation-to-dirt misclassification." width="1004" height="833" loading="lazy" decoding="async">
@@ -136,26 +135,30 @@
       </div>
     </section>
 
-    <section id="talk" class="section wrap narrow" aria-labelledby="talk-heading">
-      <p class="section-label">Research talk</p>
-      <h2 id="talk-heading">The story behind the method</h2>
-      <p>Junwon Seo presents this work as part of <em>Embracing Uncertainty in Off-road Perception: Towards Robust Autonomous Navigation</em>. The relevant segment runs from <a href="https://www.youtube.com/watch?v=xJEXuIprkSg&amp;t=2437">40:37 to 47:42</a>, covering the motivation, pseudo-label generation, fusion network, and seasonal-shift results.</p>
-      <div class="video-frame">
-        <iframe src="https://www.youtube-nocookie.com/embed/xJEXuIprkSg?start=2437&amp;end=2862" title="Junwon Seo: uncertainty-aware sensor fusion for BEV semantic terrain map estimation, 40:37 to 47:42" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <p class="video-link"><a href="https://www.youtube.com/watch?v=xJEXuIprkSg&amp;t=2437">Watch the relevant section on YouTube ↗</a></p>
-    </section>
-
     <section class="section wrap narrow" aria-labelledby="abstract-heading">
       <details class="abstract">
         <summary id="abstract-heading">Read the abstract</summary>
         <p>Autonomous navigation in off-road conditions requires a precise semantic understanding of the surroundings, often represented in a bird's-eye view (BEV) for downstream tasks. Despite the success of end-to-end learning-based approaches in generating local semantic terrain maps from sensor data, their applicability in diverse off-road environments is hindered by limited 3D datasets and uncertain terrain characteristics. This paper proposes a scalable learning-based framework for generating dense semantic terrain maps in BEV. By fusing LiDAR and image data at multiple scales, our approach enhances the accuracy of the local semantic map estimated by an RGB image and a single LiDAR scan. Additionally, the network improves applicability across various off-road conditions without 3D annotations by leveraging uncertainty-aware, image-guided pseudo labels. Through extensive evaluation using diverse off-road driving datasets, we show that our method can improve both accuracy and adaptability in diverse off-road terrains, validating its efficacy in facilitating robust and reliable semantic terrain map estimation in varying off-road settings.</p>
       </details>
     </section>
+
+    <section id="citation" class="section wrap narrow" aria-labelledby="citation-heading">
+      <div class="citation-heading">
+        <h2 id="citation-heading">Citation</h2>
+        <a href="citation.bib" download>Download BibTeX ↓</a>
+      </div>
+      <pre class="citation-code" tabindex="0" role="region" aria-label="BibTeX citation; scroll horizontally to read long lines"><code>@inproceedings{kim2024scalable,
+  title = {Scalable Off-road Semantic Terrain Map Estimation using
+           Uncertainty-aware LiDAR-Camera Fusion},
+  author = {Kim, Ohn and Seo, Junwon and Ahn, Seongyong},
+  booktitle = {IEEE Intelligent Vehicles Symposium (IV)},
+  year = {2024}
+}</code></pre>
+    </section>
   </main>
   <footer class="wrap">
     <a href="../#publications-heading">← All publications</a>
-    <p>Figures and results from the <a href="paper.pdf">manuscript PDF</a>.</p>
+    <p>Figures and results from the <a href="paper.pdf">extended paper PDF</a>.</p>
   </footer>
 </body>
 </html>
