@@ -33,15 +33,15 @@ a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 .publication-entry .publication-authors { margin-top: 5px; }
 .publication-entry .publication-venue { margin: 3px 0 9px; }
 .publication-note { color: #666; font-size: 12px; }
-.publication-links { display: flex; flex-wrap: wrap; gap: 6px; }
+.publication-links { display: inline-flex; vertical-align: middle; flex-wrap: wrap; gap: 6px; }
 .publication-links a, .resource-pending, .publication-tldr summary {
   display: inline-block; border: 1px solid #d6dce3; border-radius: 4px;
   padding: 3px 8px; font-size: 12px; line-height: 1.4; background: #fff;
 }
 .publication-links a:hover { background: #f3f7fc; border-color: #1772d0; color: #1772d0; }
 .resource-pending { color: #767676; border-style: dashed; }
-.publication-tldr { margin-top: 6px; }
-.publication-tldr summary { color: #505b68; cursor: pointer; list-style: none; }
+.publication-tldr { display: inline; }
+.publication-tldr summary { vertical-align: middle; color: #505b68; cursor: pointer; list-style: none; }
 .publication-tldr summary::-webkit-details-marker { display: none; }
 .publication-tldr summary::after { content: ' +'; font-weight: 700; }
 .publication-tldr[open] summary::after { content: ' −'; }
@@ -68,5 +68,6 @@ footer p, footer a { font-size: 12px; }
   .text-section { padding: 18px 20px; }
   .publication-entry { grid-template-columns: 1fr; gap: 16px; }
   .publication-teaser { width: min(100%, 280px); }
+  .publication-links a, .resource-pending, .publication-tldr summary { padding: 3px 6px; font-size: 11px; }
   footer { padding-top: 48px; }
 }
