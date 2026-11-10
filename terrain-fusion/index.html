@@ -26,8 +26,8 @@
     <h1>Scalable Off-road Semantic Terrain Map Estimation using <span>Uncertainty-aware LiDAR-Camera Fusion</span></h1>
     <p class="venue">IEEE Intelligent Vehicles Symposium (IV), 2024</p>
     <div class="authors">
-      <span><a href="../">Ohn Kim</a><sup>*</sup></span>
-      <span><a href="https://junwon.me/">Junwon Seo</a><sup>*</sup></span>
+      <span><a href="../" target="_blank" rel="noopener noreferrer">Ohn Kim</a><sup>*</sup></span>
+      <span><a href="https://junwon.me/" target="_blank" rel="noopener noreferrer">Junwon Seo</a><sup>*</sup></span>
       <span>Seongyong Ahn</span>
     </div>
     <p class="affiliation">Agency for Defense Development</p>
@@ -42,7 +42,7 @@
       <p class="lead">A single LiDAR scan and an RGB image.<br><strong>A dense semantic map of the terrain ahead.</strong></p>
       <figure class="teaser-figure">
         <img src="assets/teaser.webp" alt="Two off-road scenes, each showing an RGB image and a sparse LiDAR scan alongside the dense bird's-eye-view semantic terrain map produced by fusion." width="1033" height="629" fetchpriority="high">
-        <figcaption>Combine the camera's visual semantics with LiDAR's geometric structure to complete a local terrain map in bird's-eye view (BEV). Figure 1 from the extended version.</figcaption>
+        <figcaption>Combine the camera's visual semantics with LiDAR's geometric structure to complete a local terrain map in bird's-eye view (BEV).</figcaption>
       </figure>
       <p class="tldr"><strong>TL;DR</strong> Multi-scale sensor fusion improves terrain classification. Image-guided pseudo-labels provide supervision without manual 3D annotation, while uncertainty-aware training reduces the influence of unreliable labels.</p>
     </section>
@@ -62,7 +62,7 @@
       <div class="split-layout">
         <figure>
           <img src="assets/pseudo-labels.webp" alt="Image segmentation predictions across three timesteps are accumulated into a BEV pseudo-label map and an uncertainty map. Inconsistent predictions produce high uncertainty." width="1037" height="1146" loading="lazy" decoding="async">
-          <figcaption>Image-guided pseudo-labels and their uncertainty. Brighter regions in the uncertainty map indicate greater disagreement. Figure 2.</figcaption>
+          <figcaption>Image-guided pseudo-labels and their uncertainty. Brighter regions in the uncertainty map indicate greater disagreement.</figcaption>
         </figure>
         <div class="prose">
           <h3>Accumulate predictions across time</h3>
@@ -84,7 +84,7 @@
       </div>
       <figure>
         <img src="assets/pipeline.webp" alt="Network architecture with RGB and LiDAR encoders, multi-scale attentive feature fusion between sparse 3D U-Nets, BEV feature compression, and a 2D U-Net producing the terrain class map." width="2108" height="712" loading="lazy" decoding="async">
-        <figcaption>LiDAR points associate image features with 3D voxels. Channel attention selects complementary features before the fused representation is decoded into a dense semantic terrain map. Figure 3.</figcaption>
+        <figcaption>LiDAR points associate image features with 3D voxels. Channel attention selects complementary features before the fused representation is decoded into a dense semantic terrain map.</figcaption>
       </figure>
     </section>
 
@@ -96,11 +96,11 @@
       </div>
       <figure>
         <img src="assets/qualitative.webp" alt="Four scenes comparing RGB images, ground truth, camera-only, LiDAR-only, and the proposed fusion method. Fusion better preserves terrain geometry and identifies semantic details such as puddles and dirt." width="1796" height="1450" loading="lazy" decoding="async">
-        <figcaption>Top two rows: RELLIS-3D. Bottom two rows: the authors' dataset. Camera-only predictions lose geometric structure; LiDAR-only predictions miss semantic detail. Figure 4.</figcaption>
+        <figcaption>Top two rows: RELLIS-3D. Bottom two rows: the authors' dataset. Camera-only predictions lose geometric structure; LiDAR-only predictions miss semantic detail.</figcaption>
       </figure>
       <div class="table-scroll" role="region" aria-label="Quantitative mapping results; scroll horizontally on small screens" tabindex="0">
         <table>
-          <caption>Semantic terrain map estimation <span>· Table I, extended version</span></caption>
+          <caption>Semantic terrain map estimation</caption>
           <thead>
             <tr><th scope="col" rowspan="2">Method</th><th scope="colgroup" colspan="2">RELLIS-3D</th><th scope="colgroup" colspan="2">Authors' dataset</th></tr>
             <tr><th scope="col">mIoU (%) ↑</th><th scope="col">Accuracy (%) ↑</th><th scope="col">mIoU (%) ↑</th><th scope="col">Accuracy (%) ↑</th></tr>
@@ -129,7 +129,7 @@
         </div>
         <figure>
           <img src="assets/seasonal-shift.webp" alt="Summer and winter views of the same road, noisy winter segmentation, and BEV predictions without and with uncertainty-aware optimization. The uncertainty-aware result reduces vegetation-to-dirt misclassification." width="1004" height="833" loading="lazy" decoding="async">
-          <figcaption>Learning from noisy winter pseudo-labels generated by a summer-trained segmentation model. Figure 5.</figcaption>
+          <figcaption>Learning from noisy winter pseudo-labels generated by a summer-trained segmentation model.</figcaption>
         </figure>
       </div>
     </section>
