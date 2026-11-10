@@ -24,11 +24,30 @@ a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 
 .text-section { padding: 20px; }
 .text-section p { margin: 14px 0 0; line-height: 1.5; }
-.publication-entry { padding: 20px 0 0; }
+.publication-entry { display: grid; grid-template-columns: 200px minmax(0, 1fr); align-items: center; gap: 24px; padding: 26px 0 0; }
+.publication-entry + .publication-entry { padding-top: 32px; }
+.publication-teaser { display: block; }
+.publication-teaser img { display: block; width: 100%; height: auto; }
 .publication-entry h3 { font-size: 14px; line-height: 1.5; margin: 0; }
 .publication-entry p { margin-top: 0; }
 .publication-entry .publication-authors { margin-top: 5px; }
-.publication-entry .publication-summary { margin-top: 12px; }
+.publication-entry .publication-venue { margin: 3px 0 9px; }
+.publication-note { color: #666; font-size: 12px; }
+.publication-links { display: flex; flex-wrap: wrap; gap: 6px; }
+.publication-links a, .resource-pending, .publication-tldr summary {
+  display: inline-block; border: 1px solid #d6dce3; border-radius: 4px;
+  padding: 3px 8px; font-size: 12px; line-height: 1.4; background: #fff;
+}
+.publication-links a:hover { background: #f3f7fc; border-color: #1772d0; color: #1772d0; }
+.resource-pending { color: #767676; border-style: dashed; }
+.publication-tldr { margin-top: 6px; }
+.publication-tldr summary { color: #505b68; cursor: pointer; list-style: none; }
+.publication-tldr summary::-webkit-details-marker { display: none; }
+.publication-tldr summary::after { content: ' +'; font-weight: 700; }
+.publication-tldr[open] summary::after { content: ' −'; }
+.publication-tldr summary:hover { border-color: #1772d0; color: #1772d0; }
+.publication-tldr summary:focus-visible { outline: 2px solid #1772d0; outline-offset: 3px; }
+.publication-tldr p { margin: 10px 0 0; padding-left: 12px; border-left: 2px solid #dce8f5; color: #444; }
 footer { padding: 64px 20px 14px; text-align: center; }
 footer p, footer a { font-size: 12px; }
 
@@ -47,5 +66,7 @@ footer p, footer a { font-size: 12px; }
   .name { padding-top: 8px; }
   .profile-text p { max-width: 360px; margin-left: auto; margin-right: auto; }
   .text-section { padding: 18px 20px; }
+  .publication-entry { grid-template-columns: 1fr; gap: 16px; }
+  .publication-teaser { width: min(100%, 280px); }
   footer { padding-top: 48px; }
 }
